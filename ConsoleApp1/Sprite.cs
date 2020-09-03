@@ -10,7 +10,7 @@ namespace ConsoleApp1
     class Sprite : GameObject
     {
         public SpriteBank spriteBank;
-        public int[] spriteIndex;
+        public int[] spriteIndexList;
         public float interval;
         int currentFrame = 0;
         public Sprite() { }
@@ -25,12 +25,12 @@ namespace ConsoleApp1
         /// <param name="_spriteIndexList">The indexes of the various sprites to animate.</param>
         public Sprite(SpriteBank _bank, float _interval, Vector2 _pos, params int[] _spriteIndexList)
         {
-            spriteIndex = new int[_spriteIndexList.Length];
+            spriteIndexList = new int[_spriteIndexList.Length];
             interval = _interval;
             spriteBank = _bank;
             pos = _pos;
             for (int i = 0; i < _spriteIndexList.Length; i++)
-                spriteIndex[i] = _spriteIndexList[i];
+                spriteIndexList[i] = _spriteIndexList[i];
         }
         float cTime = 0;
         /// <summary>
@@ -46,10 +46,10 @@ namespace ConsoleApp1
                 currentFrame++;
             }
 
-            if (currentFrame == spriteIndex.Length)
+            if (currentFrame == spriteIndexList.Length)
                 currentFrame = 0;
 
-            Texture2D tmp = spriteBank.bank[spriteIndex[currentFrame]];
+            Texture2D tmp = spriteBank.bank[spriteIndexList[currentFrame]];
             size = new Vector2(tmp.width, tmp.height) * .5f;
             rl.DrawTexturePro(tmp,
                 new Rectangle(0, 0, tmp.width, tmp.height),
