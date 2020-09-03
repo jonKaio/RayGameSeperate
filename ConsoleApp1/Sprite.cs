@@ -22,15 +22,15 @@ namespace ConsoleApp1
         /// </summary>
         /// <param name="_bank">The sprite bank that contains all the individual textures to be used</param>
         /// <param name="_interval">The framerate of the animation</param>
-        /// <param name="_index">The indexes of the various sprites to animate.</param>
-        public Sprite(SpriteBank _bank, float _interval, Vector2 _pos, params int[] _index)
+        /// <param name="_spriteIndexList">The indexes of the various sprites to animate.</param>
+        public Sprite(SpriteBank _bank, float _interval, Vector2 _pos, params int[] _spriteIndexList)
         {
-            spriteIndex = new int[_index.Length];
+            spriteIndex = new int[_spriteIndexList.Length];
             interval = _interval;
             spriteBank = _bank;
             pos = _pos;
-            for (int i = 0; i < _index.Length; i++)
-                spriteIndex[i] = _index[i];
+            for (int i = 0; i < _spriteIndexList.Length; i++)
+                spriteIndex[i] = _spriteIndexList[i];
         }
         float cTime = 0;
         /// <summary>
